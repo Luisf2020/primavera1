@@ -1,80 +1,80 @@
-# Seguridad Primavera
+# Seguridad Primavera — gestion de seguridad residencial
 
-Aplicación web para la gestión de seguridad residencial, control de accesos y administración básica de residentes, guardias, visitas y pagos.
+![stack: Node.js](https://img.shields.io/badge/stack--Node.js-0d9488?style=flat-square) ![stack: Express](https://img.shields.io/badge/stack--Express-0d9488?style=flat-square) ![stack: SQLite](https://img.shields.io/badge/stack--SQLite-0d9488?style=flat-square) ![stack: JWT](https://img.shields.io/badge/stack--JWT-0d9488?style=flat-square) ![IA: asistido](https://img.shields.io/badge/IA--asistido-6366f1?style=flat-square)
 
-## Funcionalidades principales
+Sistema para la gestion de seguridad residencial: control de accesos, residentes, guardias, visitas, incidentes y pagos, con autenticacion por JWT.
 
-- Inicio de sesión con autenticación basada en JWT.
-- Gestión de residentes y guardias.
-- Registro de entradas y salidas.
-- Bitácora de incidentes.
-- Historial de visitas.
-- Gestión de empresas vinculadas.
-- Registro de pagos y deudas.
-- Panel administrativo.
-- Exportación de información en CSV desde la interfaz.
-- Visualización de datos con gráficos.
+**Tipo:** Aplicacion web con backend · **Complejidad:** Avanzado
 
-## Tecnologías
+## Problema que resuelve
+
+Centralizar la operacion diaria de un conjunto residencial (quien entra, quien sale, que incidencias ocurren y que pagos se registran) en una sola herramienta.
+
+## Solucion implementada
+
+Servidor Node/Express con autenticacion JWT y contrasenas con bcrypt, persistencia en SQLite, panel administrativo y exportacion de datos; la interfaz usa Chart.js y SweetAlert2.
+
+### Funcionalidades principales
+
+- Autenticacion con JWT y hash de contrasenas (bcrypt)
+- Gestion de residentes, guardias y empresas vinculadas
+- Registro de entradas/salidas y visitas
+- Bitacora de incidentes y gestion de pagos/deudas
+- Panel administrativo con graficos (Chart.js) y exportacion CSV
+
+## Stack
 
 - Node.js
 - Express
 - SQLite
+- JWT
 - JavaScript
-- HTML5
-- CSS3
 - Tailwind CSS
-- JSON Web Tokens
-- bcrypt
-- Chart.js
-- SweetAlert2
 
-## Arquitectura
+## Estructura
 
-```text
-seguridad-primavera/
-├── public/
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── database.js
-├── server.js
-├── package.json
-├── .env.example
-└── .gitignore
+```
+server.js       # API y autenticacion
+database.js     # acceso a SQLite
+public/         # interfaz (HTML/CSS/JS)
+.env.example    # variables de entorno
 ```
 
-## Instalación local
-
-1. Clona el repositorio.
-2. Instala las dependencias:
+## Puesta en marcha
 
 ```bash
 npm install
-```
-
-3. Crea un archivo `.env` tomando como referencia `.env.example`.
-4. Define un `JWT_SECRET` aleatorio y robusto de al menos 32 caracteres.
-5. Si necesitas crear las primeras cuentas administrativas, utiliza temporalmente las variables `BOOTSTRAP_*` del archivo de ejemplo.
-6. Inicia la aplicación:
-
-```bash
+cp .env.example .env   # definir claves
 npm start
 ```
 
-La aplicación se ejecuta por defecto en `http://localhost:4000`.
+## Complejidad del proyecto
 
-## Seguridad
+**Nivel: Avanzado** — Multiples modulos de dominio, autenticacion, autorizacion por sesion, persistencia relacional, graficos y exportacion de datos.
 
-Este repositorio no debe contener archivos `.env`, bases de datos locales ni credenciales reales. Las contraseñas se almacenan mediante hash con bcrypt y los secretos deben configurarse exclusivamente mediante variables de entorno.
+El nivel describe la complejidad tecnica del proyecto, no el grado de dominio de quien lo escribio.
 
-Para un despliegue de producción se recomienda, además, restringir CORS, aplicar rate limiting al inicio de sesión, utilizar HTTPS, gestionar secretos mediante el proveedor cloud y utilizar una base de datos administrada en lugar de una base SQLite local.
+## Despliegue
 
-## Estado del proyecto
+Aplicacion con backend y base de datos; requiere hosting con Node (no es estatica).  
+El codigo fuente esta disponible en este repositorio.
 
-Proyecto demostrativo y en evolución. Antes de utilizarlo en un entorno real deben realizarse pruebas de seguridad, validaciones adicionales y configuración específica de infraestructura.
+> Las claves reales no estan en el repositorio: usa `.env` (esta ignorado) a partir de `.env.example`.
+
+## Transparencia sobre IA
+
+Este proyecto se desarrollo con asistencia de inteligencia artificial (generacion de codigo,
+revision y documentacion). El codigo fue leido, ejecutado y probado manualmente. No se declaran
+clientes, metricas ni resultados que no puedan verificarse.
 
 ## Autor
 
-**Luis Felipe Zuniga León**  
-Software Development · Cloud · Cybersecurity · AI
+**Luis Felipe Zuniga Leon** — Desarrollador de software asistido por IA
+
+- GitHub: <https://github.com/Luisf2020>
+- Correo: developerluis2@gmail.com
+- WhatsApp: +504 3237 0056
+
+---
+
+_Proyecto de portafolio. El desarrollo se apoyo en herramientas de IA bajo revision tecnica humana._
